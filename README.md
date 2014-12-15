@@ -9,3 +9,5 @@ distribution (RHEL, Fedora, CentOS, etc.).
 
 (c) Keith's Tech Blog 2014
 http://keithstechblog.wordpress.com
+
+Licensed under GNU General Public License 2.0. Details in LICENSE file.
