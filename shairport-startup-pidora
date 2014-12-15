@@ -1,0 +1,50 @@
+#!/bin/sh
+#
+# Author: keithstechblog@gmail.com
+#
+# shairport
+#
+# System startup script for shairport
+#
+# chkconfig: 045 20 80
+#
+
+prog=shairport.pl
+exec=/usr/local/bin/shairport.pl
+pidfile=/var/run/shairport.pid
+cmdopts="-d -w $pidfile -a `hostname -s` &"
+
+start() {
+    echo -n "Starting $prog: "
+    $exec $cmdopts
+    echo
+}
+
+stop() {
+    echo -n "Stopping $prog: "
+    kill `cat $pidfile`
+    rm -f $pidfile
+    echo
+}
+
+restart() {
+    stop
+    start
+}
+
+case "$1" in
+    start)
+        $1
+        ;;
+    stop)
+        $1
+        ;;
+    restart)
+        $1
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 2
+esac
+exit $?
+
